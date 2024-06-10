@@ -4,13 +4,12 @@ import { fetchProducts } from './api/products';
 import { ProductCard } from './components/Card';
 
 export default function Home() {
-    const { data: products, error, isLoading } = useQuery('products', fetchProducts);
+    const { data: products, isLoading } = useQuery('products', fetchProducts);
 
     if (isLoading) return (
      <div className="flex justify-center items-center py-80 md:py-64">
       <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16 md:h-36 md:w-36"></div> 
     </div>);
-    if (error) return <div>Error: {error.message}</div>;
 
     return (
         <main className="flex-1 pt-20">
